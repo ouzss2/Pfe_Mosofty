@@ -1,0 +1,84 @@
+<!--Page header-->
+<div class="page-header">
+     
+    
+</div>
+<!--End Page header-->
+
+<!-- Row -->
+<div class="row">
+    <div class="col-md-12">
+   
+        <div class="card">
+            
+            <div class="card-body p-6">
+                <div class="panel panel-primary">
+                    <div class="tab-menu-heading p-0 bg-light">
+                        <div class="tabs-menu1 ">
+                            <!-- Tabs -->
+                            <ul ngbNav #nav2="ngbNav" [(activeId)]="TabStyle2" class="nav">
+                                <li [ngbNavItem]="1" class=""><a ngbNavLink>Paramètre personnel</a>
+                                    <ng-template ngbNavContent>
+                                       <personnel></personnel>
+                                    </ng-template>
+                                </li>
+                                <li [ngbNavItem]="2" class=""><a ngbNavLink>Paramètre Globaux</a>
+                                    <ng-template ngbNavContent>
+                                        helloooooo 
+                                    </ng-template>
+                                </li>
+                             <!--   <li [ngbNavItem]="2"><a ngbNavLink>Tab 2</a>
+                                    <ng-template ngbNavContent>
+                                        <p> default model text, and a search for 'lorem ipsum' will uncover many web
+                                            sites still
+                                            in their infancy. Various versions have evolved over the years, sometimes by
+                                            accident, sometimes on purpose (injected humour and the like</p>
+                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                            eirmod
+                                            tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+                                            At vero
+                                            eos et</p>
+                                    </ng-template>
+                                </li>
+                                <li [ngbNavItem]="3"><a ngbNavLink>Tab 3</a>
+                                    <ng-template ngbNavContent>
+                                        <p>over the years, sometimes by accident, sometimes on purpose (injected humour
+                                            and the
+                                            like</p>
+                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                            eirmod
+                                            tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+                                            At vero
+                                            eos et</p>
+                                    </ng-template>
+                                </li>
+                                <li [ngbNavItem]="4"><a ngbNavLink>Tab 4</a>
+                                    <ng-template ngbNavContent>
+                                        <p>page editors now use Lorem Ipsum as their default model text, and a search
+                                            for 'lorem
+                                            ipsum' will uncover many web sites still in their infancy. Various versions
+                                            have
+                                            evolved over the years, sometimes by accident, sometimes on purpose
+                                            (injected humour
+                                            and the like</p>
+                                        <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy
+                                            eirmod
+                                            tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+                                            At vero
+                                            eos et</p>
+                                    </ng-template>
+                                </li>-->
+                            </ul>
+                        </div>
+                    </div>
+                    <div [ngbNavOutlet]="nav2" class="tabs-menu-body"></div>
+                </div>
+            </div>
+            
+         
+        </div>
+
+     
+    </div>
+</div>
+<!-- End Row -->

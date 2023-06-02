@@ -1,0 +1,54 @@
+.container3 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+  background-color: #fcfcfc;
+  border: 1px solid #ccc;
+  box-shadow: -10px 0 10px -10px rgb(236, 31, 226);
+}
+
+.left-section3 {
+  display: flex;
+  flex-direction: column;
+}
+
+.title3 {
+  margin-bottom: 5px;
+}
+
+.right-section3 {
+  display: flex;
+  align-items: center; 
+}
+
+.divider {
+  height: 50px;
+  width: 1px;
+  background-color: #ccc;
+  margin: 0 10px; 
+}
+
+.divider-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.button-1 {
+  background-color: #f6f7f8;
+  color: white;
+  border: none;
+  height: 50px;
+  width: 50px;
+  box-shadow: 0 2px 4px rgb(158, 158, 158);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-radius: 70%;
+}
+
+.right3 {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+}
+

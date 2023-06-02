@@ -1,0 +1,513 @@
+<!--row open-->
+<div class="row">
+  <div class="col-12">
+      <div class="card">
+          <div class="card-header">
+              <h3 class="card-title">Créer une nouvelle mission</h3>
+          </div>
+          <div class="card-body">
+              <ng-wizard [config]="config2" (stepChanged)="stepChanged($event)">
+                <div class="form-group">
+                    <label>Recherche d'une société</label>
+                    <input type="text" class="form-control" id="inputtext" placeholder="Enter User Name">
+                </div>
+                  <ng-wizard-step [title]="'Information sur la société'" [description]="'étape 1'" [canEnter]="isValidTypeBoolean"
+                      [canExit]="isValidFunctionReturnsBoolean.bind(this)">
+                      <form [formGroup]="societeInformation">
+                      
+                    <div class="row">
+                      <div class="col-lg-14 col-xl-6 col-md-14 col-sm-14">
+                        <div class="card">
+                          <div class="card-header">
+                              <h4 class="card-title">Information de la Société</h4>
+                          </div>
+                          <div class="card-body">
+                              <div class="row">
+                                  <div class="col-lg-6 col-md-12">
+                                    
+                                          <div class="form-group">
+                                              <label class=" form-label">Nom</label>
+                                              <div class="col-md-9">
+                                                  <input type="text" class="form-control" formControlName="companyName" >
+                                              </div>
+                                          </div>
+                                         
+                                          <div class="form-group ">
+                                            <label class="form-label">Effectif</label>
+                                            <div class="col-md-9">
+                                                <input class="form-control" type="number" name="number" formControlName="effectif">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group ">
+                                          <label class="  form-label">Responsable Manager</label>
+                                          <input type="text" class="form-control"  formControlName="responsable">
+                                        </div>
+                                        
+                                      
+                                  </div>
+                                  <div class="col-lg-6 col-md-12">
+                                    
+                                        <div class="form-group  ">
+                                          <label class=" form-label">Etat</label>
+                                          <ng-select  class="col-md-9"  placeholder="--Select--" formControlName="status">
+                                              <ng-option *ngFor="let clientState of clientStates" [value]="clientState.id">{{clientState.name}}</ng-option>
+                                          </ng-select>
+                                        </div>
+                                        <div class="form-group  ">
+                                          <label class="form-label">Secteur</label>
+                                          <ng-select   class="col-md-9"   placeholder="--Select--" formControlName="secteur"> 
+                                              <ng-option *ngFor="let secteur of secteurs" [value]="secteur.id">{{secteur.name}}</ng-option>
+                                          </ng-select>
+                                        </div>
+                                                                                   
+                                      
+                                  </div>
+                              </div>
+                          </div>
+                          </div>
+                        </div>
+                   
+                        <div class="col-lg-14 col-xl-6 col-md-14 col-sm-14">
+                            <div class="card">
+                              <div class="card-header">
+                                  <h4 class="card-title">Coordonnées société    </h4>
+                              </div>
+                              <div class="card-body">
+                                  <div class="row">
+                                      <div class="col-lg-6 col-md-12">
+                                         
+                                              <div class="form-group">
+                                                  <label class=" form-label">Tel</label>
+                                                  <div class="col-md-9">
+                                                    <input class="form-control" type="tel" name="tel" formControlName="tel">
+                                                  </div>
+                                              </div>
+                                             
+                                               
+                                            <div class="form-group ">
+                                              <label class="form-label">Adresse</label>
+                                              <input class="form-control" type="text" name="adresse" formControlName="adresse">
+                                            </div>
+                                            <div class="form-group  ">
+                                                <label class="  form-label">Code Postal</label>
+                                                <div  >
+                                                    <input class="form-control" type="text" name="codePostal" formControlName="postalCode">
+                                                </div>
+                                            </div>
+                                         
+                                          
+                                      </div>
+                                      <div class="col-lg-6 col-md-12">
+                                          
+                                            <div class="form-group  ">
+                                              <label class=" form-label">Email</label>
+                                              <input type="email" id="email" name="email" class="form-control"
+                                              placeholder="Email" formControlName="email">
+                                            </div>
+                                            <div class="form-group  ">
+                                              <label class="form-label">Ville</label>
+                                              <input class="form-control" type="text" name="ville" formControlName="ville">
+                                            </div>
+                                            
+                                            <div class="form-group  ">
+                                                <label class=" form-label">Site Web</label>
+                                                <input class="form-control" type="text" name="siteWeb" formControlName="website">
+                                              </div>
+                                           
+                                      </div>
+                                  </div>
+                              </div>
+                              </div>
+                            </div>
+                       
+                            <div class="col-lg-14 col-xl-6 col-md-14 col-sm-14">
+                                <div class="card">
+                                  <div class="card-header">
+                                      <h4 class="card-title">Données légales      </h4>
+                                  </div>
+                                  <div class="card-body">
+                                      <div class="row">
+                                          <div class="col-lg-6 col-md-12">
+                                              
+                                                  <div class="form-group">
+                                                      <label class=" form-label">Statut Juridique</label>
+                                                      <ng-select   class="col-md-9"   placeholder="--Select--" formControlName="statut"> 
+                                                        <ng-option *ngFor="let statu of status" [value]="statu.id">{{statu.name}}</ng-option>
+                                                    </ng-select>
+
+                                                      
+                                                  </div>
+                                                 
+                                                   
+                                                <div class="form-group ">
+                                                  <label class="form-label">TVA IC</label>
+                                                  <input class="form-control" type="text" name="tva" formControlName="tva">
+                                                </div>
+                                                <div class="form-group  ">
+                                                    <label class="  form-label">SIRET</label>
+                                                    <div  >
+                                                        <input class="form-control" type="text" name="siret" formControlName="siret">
+                                                    </div>
+                                                </div>
+                                              
+                                             
+                                                
+                                                  
+                                             
+                                          </div>
+                                          <div class="col-lg-6 col-md-12">
+                                              
+                                               
+                                                
+                                                <div class="form-group  ">
+                                                    <label class="  form-label">SIREN</label>
+                                                    <div  >
+                                                        <input class="form-control" type="text" name="siren">
+                                                    </div>
+                                                </div>
+                                                <div class="form-group  ">
+                                                    <label class=" form-label">CODE APE</label>
+                                                    <input class="form-control" type="text" name="codePostal">
+                                                  </div>
+                                                  <div class="form-group  ">
+                                                    <label class=" form-label">RCS</label>
+                                                    <input class="form-control" type="text" name="rcs" formControlName="rcs">
+                                                  </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  </div>
+                                </div>
+                                
+                                <div class="col-lg-14 col-xl-6 col-md-14 col-sm-14">
+                                    <div class="card">
+                                      <div class="card-header">
+                                          <h4 class="card-title">Coordonnées Bancaire  </h4>
+                                      </div>
+                                      <div class="card-body">
+                                          <div class="row">
+                                              <div class="col-lg-6 col-md-12">
+                                                 
+                                                      <div class="form-group">
+                                                          <label class=" form-label">Compte N°:</label>
+                                                          <div class="col-md-9">
+                                                            <input class="form-control" type="text" name="compte" formControlName="compte">
+                                                          </div>
+                                                      </div>
+                                                     
+                                                      <div class="form-group ">
+                                                        <label class="form-label">IBAN: </label>
+                                                        <input class="form-control" type="text" name="iban" formControlName="iban">
+                                                      </div>
+                                                  
+                                                
+                                                  
+                                                  
+                                              </div>
+                                              <div class="col-lg-6 col-md-12">
+                                                  
+                                                <div class="form-group  ">
+                                                    <label class="  form-label">RIB: </label>
+                                                    <div  >
+                                                        <input class="form-control" type="text" name="rib" formControlName="rib">
+                                                    </div>
+                                                </div>
+                                                  <div class="form-group ">
+                                                    <label class="form-label">BIC: </label>
+                                                    <input class="form-control" type="text" name="bic" formControlName="bic">
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                      </div>
+                                    </div>
+                     </div>
+                     </form>
+                  </ng-wizard-step>
+
+
+                  <ng-wizard-step [title]="'Information sur la mission'" [description]="'Step2'"
+                      [canEnter]="isValidFunctionReturnsObservable.bind(this)"
+                      [canExit]="isValidFunctionReturnsBoolean.bind(this)">
+                      <form [formGroup]="missionInformation">
+                        <div class="row">
+                                <div class="col-lg-14 col-xl-6 col-md-14 col-sm-14">
+                                    <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Information générales     </h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-lg-6 col-md-12">
+                                               
+                                                    <div class="form-group  ">
+                                                        <label class=" form-label">Date de Début</label>                                            
+                                                            <input class="form-control" type="date" name="startDate" formControlName="startDate">                                           
+                                                    </div>
+                                                    
+                                                    <div class="form-group ">
+                                                        <label class=" form-label">Nombre de jour vendu</label>                                           
+                                                            <input class="form-control" type="number" name="sellDays" formControlName="sellDays">                                            
+                                                    </div>
+
+                                                    <div class="form-group ">
+                                                        <label class="form-label">TJM HT (eur)</label>
+                                                        <input class="form-control" type="text" name="tjm" formControlName="tjm">
+                                                    </div>
+                                               
+                                            </div>
+                                            <div class="col-lg-6 col-md-12">
+                                                
+                                                    <div class="form-group  ">
+                                                        <label class=" form-label">Date de Fin</label>                                            
+                                                            <input class="form-control" type="date" name="endDate" formControlName="endDate">                                            
+                                                    </div>
+                                                    
+                                                    <div class="form-group ">
+                                                        <label class=" form-label">Nombre de jour gratuit</label>
+                                                        
+                                                            <input class="form-control" type="number" name="freeDays" formControlName="freeDays">
+                                                        
+                                                    </div>
+                                                
+                                               
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                            
+                                <div class="col-lg-14 col-xl-6 col-md-14 col-sm-14">
+                                    <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Positionnement </h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                        
+                                               
+                                                    <div class="form-group">
+                                                        <div class="form-label">Attribuer la mission à moi</div>
+                                                        <label class="custom-switch">
+                                                            <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input"  formControlName="isForMe">
+                                                            <span class="custom-switch-indicator"></span>
+                                                            <span class="custom-switch-description">La mission sera attaché à votre profile</span>
+                                                        </label>
+                                                    </div>
+                                                    
+                                                    <div class="form-group ">
+                                                        <div class="form-label">publier la mission</div>
+                                                        <label class="custom-switch">
+                                                            <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input" formControlName="shareMission">
+                                                            <span class="custom-switch-indicator"></span>
+                                                            <span class="custom-switch-description">Vous allez recevoir des positionnement sur cette mission.</span>
+                                                        </label>                                         
+                                                    </div>
+            
+                                                
+                                             
+                                            
+                                            
+                                        </div>
+                                    </div>
+                                    </div>
+                                    </div>
+
+                                    
+                        </div>
+                     </form>
+                  </ng-wizard-step>
+
+                  <ng-wizard-step [title]="'Configuration des revenues'" [description]="'Step3'"
+                  [canEnter]="isValidFunctionReturnsObservable.bind(this)"
+                  [canExit]="isValidFunctionReturnsBoolean.bind(this)">
+                  <form [formGroup]="facturationInformation">
+                            <div class="row">
+                                <div class="col-lg-14 col-xl-6 col-md-14 col-sm-14">
+                                    <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title"> Salaire</h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                            
+                                                
+                                                    <div class="form-group  ">
+                                                        <label class=" form-label">Durée de paiement de facture par le client</label>                                            
+                                                        <ng-select  class="col-md-9"  placeholder="--Select--" formControlName="facturationType">
+                                                            <ng-option *ngFor="let facturation of facturations" [value]="facturation.id">{{facturation.name}}</ng-option>
+                                                        </ng-select>                                          
+                                                    </div>
+                                                    
+                                                    <div class="form-group">
+                                                        <div class="form-label">Salaire mensuel sans attendre le paiement des factures?</div>
+                                                        <label class="custom-switch">
+                                                            <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input" formControlName="salaryMonthly">
+                                                            <span class="custom-switch-indicator"></span>
+                                                            <span class="custom-switch-description">Vous pourriez recevoir un salaire mensuel sans attendre le paiement de la facture par le client
+                                                                <br/> Le site pourra vous avancer les salaires sans attendre la facturation de client, nous passons sur une configuration de 6% sur la facturation.
+                                                            </span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-group  ">
+                                                        <label class=" form-label">Salaire mensuel à définir</label>                                            
+                                                            <input class="form-control" type="text" name="dureeFacture" formControlName="salary">                                           
+                                                    </div>
+
+                                                     
+                                             
+                                                                                                                                        
+                                        </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                            
+                                <div class="col-lg-14 col-xl-6 col-md-14 col-sm-14">
+                                    <div class="card">
+                                    <div class="card-header">
+                                        <h4 class="card-title">Frais </h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <div class="row">
+                                        
+                                              
+                                                    <div class="form-group">
+                                                        <div class="form-label">Hôtel / Logement   </div>
+                                                        <label class="custom-switch">
+                                                            <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input"  formControlName="logement">
+                                                            <span class="custom-switch-indicator"></span>
+                                                            <span class="custom-switch-description"><br/>L’adresse de l’hôtel/logement doit se situer à + de 50km ou 1h30 de l’adresse du domicile
+                                                                Doivent être renseignés : <br/>
+                                                                Le lieu de départ, d’arrivée et le motif du séjour ;
+                                                                <br/> un justificatif prouvant la
+                                                                demande de déplacement par le client ou le prospect (mail, invitation électronique) ; 
+                                                                <br/>une capture d’écran du site Michelin attestant que le lieu est à plus de 50km ou 1h30 de transport de votre domicile.</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="form-label"> Abonnements de transports</div>
+                                                        <label class="custom-switch">
+                                                            <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input" formControlName="abonnement">
+                                                            <span class="custom-switch-indicator"></span>
+                                                            <span class="custom-switch-description">Abonnements transports, remboursés à 50% uniquement sur le mois en cours</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="form-label">Moyen de transport ponctuel</div>
+                                                        <label class="custom-switch">
+                                                            <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input" formControlName="transport">
+                                                            <span class="custom-switch-indicator"></span>
+                                                            <span class="custom-switch-description">Métro, bus, tram, Taxi/VTC, train, avion, bateau, remboursés à 100% dans le cas d’un déplacement
+                                                                ponctuel</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="form-label">Location de véhicule  </div>
+                                                        <label class="custom-switch">
+                                                            <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input" formControlName="rent">
+                                                            <span class="custom-switch-indicator"></span>
+                                                            <span class="custom-switch-description">Location de véhicule, remboursée à 100%</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="form-label">Essence/rechargement électrique  </div>
+                                                        <label class="custom-switch">
+                                                            <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input" formControlName="escence">
+                                                            <span class="custom-switch-indicator"></span>
+                                                            <span class="custom-switch-description">Essence/rechargement électrique remboursée à 50%</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="form-label">Péage </div>
+                                                        <label class="custom-switch">
+                                                            <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input" formControlName="peage">
+                                                            <span class="custom-switch-indicator"></span>
+                                                            <span class="custom-switch-description">Péage remboursé à 100%</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="form-label">Parking</div>
+                                                        <label class="custom-switch">
+                                                            <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input" formControlName="parking">
+                                                            <span class="custom-switch-indicator"></span>
+                                                            <span class="custom-switch-description">Parking remboursé à 100%</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="form-label">Repas personnels</div>
+                                                        <label class="custom-switch">
+                                                            <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input"  formControlName="personalRepas">
+                                                            <span class="custom-switch-indicator"></span>
+                                                            <span class="custom-switch-description">remboursés à 100% dans la limite de 19€ TTC / jour payé, le midi uniquement</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="form-label"> Repas d’affaires</div>
+                                                        <label class="custom-switch">
+                                                            <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input" formControlName="businessRepas">
+                                                            <span class="custom-switch-indicator"></span>
+                                                            <span class="custom-switch-description">remboursés à 100% dans la limite de 5 par mois, selon votre CA et hors WE.</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="form-label"> Équipement</div>
+                                                        <label class="custom-switch">
+                                                            <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input" formControlName="equipement">
+                                                            <span class="custom-switch-indicator"></span>
+                                                            <span class="custom-switch-description">Matériel informatique, remboursé à 50% en une fois si le montant est inférieur à 500€ HT, et
+                                                                remboursés à 100% sur 36 mois si le montant est supérieur à 500€ HT. <br/> Souris, écran, ordinateur,
+                                                                téléphone, clavier, câbles sont comptabilisés comme NTIC.</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="form-label"> Fournitures de bureau</div>
+                                                        <label class="custom-switch">
+                                                            <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input" formControlName="bureauFourniture">
+                                                            <span class="custom-switch-indicator"></span>
+                                                            <span class="custom-switch-description">(stylos, timbres, carnet, encre, etc), remboursées à 50%</span>
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="form-label">Services</div>
+                                                        <label class="custom-switch">
+                                                            <input type="checkbox" name="custom-switch-checkbox" class="custom-switch-input" formControlName="services">
+                                                            <span class="custom-switch-indicator"></span>
+                                                            <span class="custom-switch-description">
+                                                                Logiciels (Figma, LinkedIn, GitHub...), remboursés à 100% <br/>
+                                                                Espace de coworking, remboursé à 100% uniquement sur le mois en cours<br/>
+                                                                Documentation professionnelle, remboursée à 100% <br/>
+                                                                Hébergement site web, remboursés à 100% <br/>
+                                                                Formations non diplômantes ou non remboursées par le CPF ou un OPCO, MOOC, remboursés à 100%<br/>
+                                                                Salons & conférences, remboursés à 100%<br/>
+                                                                Abonnement internet & téléphone, remboursés à 50% <br/></span>
+                                                        </label>
+                                                    </div>
+                                             
+                                            
+                                        </div>
+                                    </div>
+                                    </div>
+                                    </div>
+
+                                    
+                        </div>
+                    </form>
+                  </ng-wizard-step>
+
+                  <ng-wizard-step [title]="'Simulation'" [description]="'Step4'">
+                    <div class="checkbox">
+                        <div class="custom-checkbox custom-control">
+                            <input type="checkbox" data-checkboxes="mygroup" class="custom-control-input"
+                                id="checkbox2">
+                            <label for="checkbox2" class="custom-control-label">I agree terms &
+                                Conditions</label>
+                        </div>
+                    </div>
+                </ng-wizard-step>  
+              </ng-wizard>
+          </div>
+      </div>
+  </div>
+</div>
+<!--row closed-->

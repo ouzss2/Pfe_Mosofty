@@ -1,0 +1,72 @@
+<!--row open-->
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            
+            <div class="card-body">
+               
+                  
+                  
+                        <form [formGroup]="coordonneeBancaire">
+                        
+                                <div class="row">
+            
+                                            <div class="col-lg-14 col-xl-6 col-md-14 col-sm-14">
+                                                <div class="card">
+                                                    <div class="card-header">
+                                                        <h4 class="card-title">Coordonnées Bancaire  </h4>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <div class="row">
+                                                            <div class="col-lg-6 col-md-12">
+                                                            
+                                                                    <div class="form-group">
+                                                                        <label class=" form-label">Compte N°:</label>
+                                                                        <div class="col-md-9">
+                                                                        <input class="form-control" type="text" name="compte" formControlName="compte">
+                                                                        </div>
+                                                                    </div>
+                                                                
+                                                                    <div class="form-group ">
+                                                                    <label class="form-label">IBAN: </label>
+                                                                    <input class="form-control" type="text" name="iban" formControlName="iban">
+                                                                    </div>
+                                                                
+                                                            
+                                                                
+                                                                
+                                                            </div>
+                                                            <div class="col-lg-6 col-md-12">
+                                                                
+                                                            <div class="form-group  ">
+                                                                <label class="  form-label">RIB: </label>
+                                                                <div  >
+                                                                    <input class="form-control" type="text" name="rib" formControlName="rib">
+                                                                </div>
+                                                            </div>
+                                                                <div class="form-group ">
+                                                                <label class="form-label">BIC: </label>
+                                                                <input class="form-control" type="text" name="bic" formControlName="bic">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-footer">
+                                                        <button type="button" class="btn btn-primary" (click)="savePersonnelCompte()">
+                                                            Sauvegarder l'activité
+                                                       </button>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                </div>
+                       </form>
+                 
+             
+                 
+                
+            </div>
+        </div>
+    </div>
+  </div>
+  <!--row closed-->
+  
