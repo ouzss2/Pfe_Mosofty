@@ -239,13 +239,13 @@
         <div ngbDropdown class="profile-dropdown">
           <a class="nav-link pr-0 leading-none" ngbDropdownToggle>
             <span>
-              <img src="../../assets/images/users/2.jpg" alt="img" class="avatar avatar-md brround">
+              <img src="../../assets/images/users/avatar.png" alt="img" class="avatar avatar-md brround">
             </span>
           </a>
           <div ngbDropdownMenu class="dropdown-menu-right dropdown-menu-arrow animated">
             <div class="text-center">
-              <a href="javascript:void(0)" ngbDropdownItem class="text-center user pb-0 font-weight-bold">Jessica</a>
-              <span class="text-center user-semi-title">Web Designer</span>
+              <a href="javascript:void(0)" ngbDropdownItem class="text-center user pb-0 font-weight-bold">{{user.fullName}}</a>
+              <span class="text-center user-semi-title">{{user.ufunction}}</span>
               <div class="dropdown-divider"></div>
             </div>
             <a ngbDropdownItem class="d-flex" href="javascript:void(0)">

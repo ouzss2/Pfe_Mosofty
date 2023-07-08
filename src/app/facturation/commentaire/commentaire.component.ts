@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { EditfraisComponent } from '../editfrais/editfrais.component';
+import { OcrService } from '../ocr.service';
 
 
 @Component({
@@ -9,24 +11,27 @@ import { MatDialog } from '@angular/material/dialog';
 })
 export class CommentaireComponent implements OnInit {
   isDraggedOver = false;
-  uploadedFiles: File[] = [];
+  uploadedFiles: any[] = [];
+
   containers: any[] = [
-    { title: 'Container 1', name: 'John Doe' },
-    { title: 'Container 2', name: 'Jane Smith' }
   ];
 
 
-  constructor(private dialog: MatDialog) {}
-
+  constructor(private dialog: MatDialog, private service :OcrService) {}
 
   ngOnInit(): void {
+
+    this.service.getResultList().subscribe(resultList => {
+      // Update the local variable with the updated resultList
+      this.containers = resultList;
+      // Handle the updated resultList here
+      console.log('Updated Result List:', this.containers);
+    });
   }
 
   isChecked: boolean = false;
-
-  toggleSwitch() {
-    this.isChecked = !this.isChecked;
-  }
+  userText
+ 
   onFileSelected(event: any) {
     this.isDraggedOver = false;
     const files: FileList = event.target.files;
@@ -48,7 +53,6 @@ export class CommentaireComponent implements OnInit {
     this.isDraggedOver = true;
   }
   
-
   onDragLeave(event: DragEvent) {
     event.preventDefault();
     this.isDraggedOver = false;
@@ -57,10 +61,20 @@ export class CommentaireComponent implements OnInit {
   saveFiles(files: FileList) {
     for (let i = 0; i < files.length; i++) {
       this.uploadedFiles.push(files[i]);
+      this.service.convertToBytes(files[i])
+      .then((byteString: string) => {
+        
+        this.service.imagesback.push(byteString)
+        console.log(this.service.imagesback)
+        // Do something with the wrapped string of bytes
+      })
+      .catch((error: any) => {
+        console.error(error);
+      });
+      
     }
+    
   }
-
-
 
   onDeleteImage(file: any) {
     const index = this.uploadedFiles.indexOf(file);
@@ -69,13 +83,6 @@ export class CommentaireComponent implements OnInit {
     }
   }
 
- /* openImageModal(image: any) {
-    this.dialog.open(ImageModalComponent, {
-      data: { image },
-    });
-  }*/
-
-
   deleteContainer(container: any) {
     const index = this.containers.indexOf(container);
     if (index !== -1) {
@@ -83,4 +90,18 @@ export class CommentaireComponent implements OnInit {
     }
   }
 
+  togglePopup(){
+    const dialogRef = this.dialog.open(EditfraisComponent);
+
+    // You can listen to dialog events if needed
+    dialogRef.afterClosed().subscribe(result => {
+     console.log(this.service.getfrais())
+    
+    });
+  }
+
+  saveComment(){
+    this.service.addComment(this.userText);
+    this.userText = '';
+  }
 }

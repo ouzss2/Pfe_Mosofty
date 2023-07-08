@@ -224,7 +224,7 @@
 
   textarea {
    
-   height: 200px;
+   height: 100px;
     width: 100%;
     box-sizing: border-box;
     border: 2px solid #ccc;
@@ -307,10 +307,12 @@
   .flex-item {
     flex-grow: 1;
     margin: 0 5px;
+   
   }
   .scrollable {
     max-height: 400px; /* Adjust the height as needed */
     overflow-y: auto;
+    max-width: 50%;
   }
 
   .uploaded-image-item {
@@ -422,3 +424,21 @@
     margin: 0;
   }
   
+
+  button {
+    background-color: #297ab1; /* Set the background color */
+    color: white; /* Set the text color */
+    padding: 10px 20px; /* Add padding */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Add border radius */
+    cursor: pointer; /* Add cursor on hover */
+    font-size: 16px; /* Set font size */
+  }
+  
+  button:hover {
+    background-color: #297ab1; /* Darken the background color on hover */
+  }
+  .container button {
+    float: right;
+    margin-left: 10px;
+  }

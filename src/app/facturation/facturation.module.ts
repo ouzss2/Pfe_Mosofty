@@ -4,17 +4,30 @@ import { FactureComponent } from './facture/facture.component';
 import { FactureRoutingModule } from './Facture-routing.module';
 import { ListComponent } from './list/list.component';
 import { CommentaireComponent } from './commentaire/commentaire.component';
-
-
-
+import { PopupfacComponent } from './popupfac/popupfac.component';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
+import { OcrService } from './ocr.service';
+import { ImagePopupComponentComponent } from './image-popup-component/image-popup-component.component';
+import { EditComponent } from './edit/edit.component';
+import { ToastrModule } from 'ngx-toastr';
+import { ForfaitairesComponent } from './forfaitaires/forfaitaires.component';
+import { EditfraisComponent } from './editfrais/editfrais.component';
+import { ListcommentComponent } from './listcomment/listcomment.component';
 
 
 
 @NgModule({
-  declarations: [FactureComponent, ListComponent,CommentaireComponent],
+ 
+  declarations: [FactureComponent, ListComponent,CommentaireComponent, PopupfacComponent, ImagePopupComponentComponent, EditComponent, ForfaitairesComponent, EditfraisComponent, ListcommentComponent],
   imports: [
     CommonModule,
-    FactureRoutingModule
-  ]
+    FactureRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    ToastrModule.forRoot(),
+    MatDialogModule
+  ],
+  providers: [OcrService]
 })
 export class FacturationModule { }

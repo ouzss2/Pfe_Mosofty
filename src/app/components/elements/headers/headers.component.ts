@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { OcrService } from 'src/app/facturation/ocr.service';
 
 @Component({
   selector: 'app-headers',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeadersComponent implements OnInit {
 
-  constructor() { }
+  user
+  constructor(private service:OcrService) { }
 
   ngOnInit(): void {
+   this.user = this.service.getUserData()
+   console.log("User",this.user)
   }
 
 }

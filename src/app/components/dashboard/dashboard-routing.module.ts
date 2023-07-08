@@ -13,7 +13,7 @@ const routes: Routes = [
             },
         ],
         canActivate: [
-           // IsSignedInGuard
+            IsSignedInGuard
         ]
     }
 ];

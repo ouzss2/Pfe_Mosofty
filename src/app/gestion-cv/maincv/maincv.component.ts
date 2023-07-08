@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl,FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { OcrService } from 'src/app/facturation/ocr.service';
+import { ExperienceComponent } from '../experience/experience.component';
+import { FormationComponent } from '../formation/formation.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-maincv',
@@ -8,55 +14,18 @@ import { FormControl,FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class MaincvComponent implements OnInit {
 
-  items = [
-    {
-      name: 'form1',
-      email: 'email1',
-      form: new FormGroup({
-        name: new FormControl('', Validators.required),
-        email: new FormControl('', [Validators.required, Validators.email])
-      })
-    },
-    {
-      name: 'form2',
-      email: 'email2',
-      form: new FormGroup({
-        name: new FormControl('', Validators.required),
-        email: new FormControl('', [Validators.required, Validators.email])
-      })
-    },
-    {
-      name: 'form3',
-      email: 'email3',
-      form: new FormGroup({
-        name: new FormControl('', Validators.required),
-        email: new FormControl('', [Validators.required, Validators.email])
-      })
-    }
-  ];
 
 
 
-  form: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+ 
 
-  ngOnInit(): void {
-    this.form = this.formBuilder.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]]
-    });
+  constructor() {}
+
+  ngOnInit() {
 
   }
 
 
-  onSubmit(item: any) {
-    if (item.form.valid) {
-      // Form is valid, perform the submission logic here
-    }
-  }
-
-  resetForm(item: any) {
-    item.form.reset();
-  }
 }
+

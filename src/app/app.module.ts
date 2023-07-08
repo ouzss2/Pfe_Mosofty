@@ -25,14 +25,18 @@ import { CraService } from './cra/cra.services';
 import { FacturationModule } from './facturation/facturation.module';
 import { GestionCvModule } from './gestion-cv/gestion-cv.module';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { PopupComponent } from './popup/popup.component';
+import { MatIconModule } from '@angular/material/icon';
+import { ComptableDashboardComponent } from './comptable/comptable-dashboard/comptable-dashboard.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginPageComponent,
-  
+    PopupComponent,
+    ComptableDashboardComponent,
+    
   ],
   imports: [
     MatDialogModule,

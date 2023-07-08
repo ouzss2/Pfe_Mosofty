@@ -10,6 +10,7 @@ import { Menu, NavService } from '../../services/nav.service';
 })
 export class HeaderComponent implements OnInit , AfterViewInit{
 
+  user
   public menuItems : Menu[];
   public items : Menu [];
   public elem : any;
@@ -59,6 +60,7 @@ export class HeaderComponent implements OnInit , AfterViewInit{
   }
 
   ngOnInit(): void {
+    this.user= this.navServices.getUser()
     this.elem = document.documentElement;
     this.navServices.items.subscribe(menuItems => this.items = this.menuItems);
   }

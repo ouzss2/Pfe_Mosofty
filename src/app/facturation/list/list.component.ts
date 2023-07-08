@@ -1,4 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { ImagePopupComponentComponent } from '../image-popup-component/image-popup-component.component';
+import { OcrService } from '../ocr.service';
+
+import { EditComponent } from '../edit/edit.component';
 
 @Component({
   selector: 'app-list',
@@ -6,10 +11,48 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-
-  constructor() { }
-
+   items;
+  constructor(private dialog: MatDialog,private service:OcrService) { }
+  isEditing = false
   ngOnInit(): void {
+    this.items = this.service.containers;
+  }
+
+  openImagePopup() {
+    const dialogRef = this.dialog.open(ImagePopupComponentComponent, {
+      width: '500px',
+      data: { selectedImage: this.service.getfile() }
+    });
+  
+  }
+
+  downloadImage() {
+    const file = this.service.getfile();
+    if (file) {
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(file);
+      link.download = file.name;
+      link.target = '_blank';
+      link.rel = 'noopener noreferrer';
+      link.click();
+      URL.revokeObjectURL(link.href);
+    }
+  }
+  
+
+
+  openEdit(item): void {
+   
+    const dialogRef = this.dialog.open(EditComponent, {
+      width: '500px',
+      data: { facture: item }
+    });
+  }
+
+
+  deleteItem(item){
+    console.log("Delete ")
+  this.service.deleteItem(item)
   }
 
 }

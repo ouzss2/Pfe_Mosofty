@@ -18,6 +18,8 @@ import { StrictHttpResponse } from 'src/app/api/strict-http-response';
   providedIn: 'root',
 })
 export class AuthenticationService extends BaseService {
+ // rootUrl: string;
+  http: any;
   constructor(
     config: ApiConfiguration,
     http: HttpClient
@@ -28,7 +30,7 @@ export class AuthenticationService extends BaseService {
   /**
    * Path part for operation register
    */
-  static readonly RegisterPath = '/auth/api/public/register';
+  static readonly RegisterPath = '/api/public/register';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
@@ -74,7 +76,7 @@ export class AuthenticationService extends BaseService {
   /**
    * Path part for operation login
    */
-  static readonly LoginPath = '/auth/api/public/login';
+  static readonly LoginPath = '/api/public/login';
 
   /**
    * This method provides access to the full `HttpResponse`, allowing access to response headers.
@@ -86,7 +88,7 @@ export class AuthenticationService extends BaseService {
     body: AuthRequest
   }): Observable<StrictHttpResponse<UserView>> {
 
-    const rb = new RequestBuilder(this.rootUrl, AuthenticationService.LoginPath, 'post');
+    const rb = new RequestBuilder("http://localhost:9001", AuthenticationService.LoginPath, 'post');
     if (params) {
       rb.body(params.body, 'application/json');
     }

@@ -175,12 +175,10 @@
     margin-top: 50px;
     position: relative;
     background-color: #ffffff;
-    
-    height: auto;
-
-
-    /* Add other styles as needed */
+    max-height: 400px;
+    overflow-y: auto; /* Add a scrollbar when content exceeds max-height */
   }
+  
   
   .icon-container2 {
     position: absolute;

@@ -1,4 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, TemplateRef, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { PopupnComponent } from '../popupn/popupn.component';
+
+
+export interface DialogData {
+  animal: string;
+  name: string;
+}
 
 @Component({
   selector: 'app-formation',
@@ -7,9 +16,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormationComponent implements OnInit {
 
-  constructor() { }
+
+
+  constructor() {}
 
   ngOnInit(): void {
   }
+ 
 
 }

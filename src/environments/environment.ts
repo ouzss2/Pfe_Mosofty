@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  apiUrlProcess: 'http://localhost:9001',
   apiUrl: 'http://localhost:8081',
   local: 'http://localhost:4200',
   prefixApi: '/api',

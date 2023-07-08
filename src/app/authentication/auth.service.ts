@@ -21,7 +21,7 @@ export class AuthService extends GenericService{
   let options = { headers: this.headers};
 
     return this.http
-      .post<any>(this.apiUrl + this.public+'/login',login,options);
+      .post<any>(this.newurl + this.public+'/login',login,options);
    
      // .pipe(retry(1), catchError(this.handleError)); 
   }

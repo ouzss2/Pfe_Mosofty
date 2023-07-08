@@ -67,6 +67,10 @@ export class NavService implements OnDestroy {
     }
 
 
+    getUser(){
+        return  JSON.parse(localStorage.getItem('user2'));
+    }
+
     ngOnDestroy() {
         this.unsubscriber.next();
         this.unsubscriber.complete();
@@ -81,7 +85,10 @@ export class NavService implements OnDestroy {
         { headTitle: 'Accueil' },
         {
             path: '/dashboard', title: 'Tableau de board', type: 'link', icon: 'Tableau de board', badgeType: 'danger', badgeValue: 'Hot', active: true
-        },
+        }
+        ,
+       
+        
          //Title
          { headTitle: 'Facturation' },
          {

@@ -1,0 +1,30 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+<form [formGroup]="form" *ngIf="!showProgress">
+  <div class="icon-wrapper" (click)="close()">
+    <p>Fermer</p>
+  </div>
+  <br>
+  <br>
+  <div>
+    <label for="imagePicker">Sélectionnez une image:</label>
+    <input type="file" id="imagePicker" (change)="onImageSelected($event)" formControlName="image">
+  </div>
+
+  <div>
+    <label for="dropdown">Type Du Facture:</label>
+    <select id="dropdown" formControlName="option">
+      <option *ngFor="let option of options" [value]="option.value">{{ option.label }}</option>
+    </select>
+  </div>
+
+  <button mat-raised-button color="primary" class="save-button" (click)="save()">
+    <p>Enregistrer</p>
+  </button>
+</form>
+
+<div class="loading-container" *ngIf="showProgress">
+  <div class="spinner"></div>
+  <p class="loading-message">Image en cours de traitement</p>
+</div>

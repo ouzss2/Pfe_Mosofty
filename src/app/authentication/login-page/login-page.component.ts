@@ -38,30 +38,32 @@ export class LoginPageComponent implements OnInit {
   }
   //data: HttpResponse<any>
   Submit(){
-    this.router.navigate(['/dashboard']);
-    /**this.authenticationService.login({body:{ 
+   // this.router.navigate(['/dashboard']);
+    this.authenticationService.login({body:{ 
       'password': this.loginForm.controls['password'].value ,
       'username':this.loginForm.controls['username'].value
       
-    }})/**.subscribe(resp => {
+    }}).subscribe(resp => {
+      console.log(resp)
+      localStorage.setItem('user2', JSON.stringify(resp));
        localStorage.setItem('token',resp.accessToken);
        this.autenticatedUser =   {
         id: resp.id,
-
+      
         username: resp.username,
         fullName: resp.fullName,
       };
        localStorage.setItem('user', JSON.stringify(this.autenticatedUser));
        this.router.navigate(['/dashboard']);
-    });*
+    });
     
-     .subscribe(res=> {
+     /*.subscribe(res=> {
     
       this.router.navigate(['/dashboard']);
     },
     err => {
         console.log(err);
-    })**/
+    })*/
     
   }
 

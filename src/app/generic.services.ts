@@ -5,6 +5,8 @@ import { throwError } from 'rxjs';
 export abstract class GenericService {
      basrUrl = environment.apiUrl;
     baseApi = environment.prefixApi;
+    newurl = environment.apiUrlProcess
+    
     apiUrl = this.basrUrl+environment.prefixModuleAuth+this.baseApi;
     apiFacturationUrl = this.basrUrl+environment.prefixModuleFacuration;
     apiMissionUrl = this.basrUrl+environment.prefixModuleMission;

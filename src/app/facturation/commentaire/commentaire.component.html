@@ -1,50 +1,16 @@
 <br>
 <br>
-<p>
+
+  <div class="clickable-text" (click)="togglePopup()">
     <img class="plus-icon" width="15px" height="15px" src="./assets/images/facture/plus.png" alt="Image Icon">
     <span class="blue-text">Ajouter des frais de forfaitaires</span>
-</p>
+  </div>
+
 <br>
 
 
-<div class="container" style="max-width: 100%;">
-  <div class="header">
-      <span class="resume">Résumé</span>
-  </div>
-  <div class="content">
-      <div class="left-section">
-          <div>
-              <span class="text">Freé Réels </span>
-              <span class="price">10 </span>
-              <span class="price">$ </span>
-          </div>
-          <div>
-              <span class="text">Total </span>
-              <span class="price">111 </span>
-              <span class="price">$ </span>
-          </div>
-          <div>
-              <span class="text">Avance a rependre </span>
-              <span class="price">1050 </span>
-              <span class="price">$ </span>
-          </div>
-      </div>
-      <div class="right-section">
-          <div>
-              <span class="text">A régler </span>
-              <span class="price">1021 </span>
-              <span class="price">$ </span>
-          </div>
-          <div>
-              <span class="text">Payé </span>
-              <div class="toggle-switch" [class.checked]="isChecked" (click)="toggleSwitch()">
-                  <div class="slider"></div>
-              </div>
-          </div>
-      </div>
-  </div>
-</div>
 
+<app-forfaitaires></app-forfaitaires>
 
 <br>
 <br>
@@ -53,15 +19,21 @@
 
 <!-- Commentaire -->
 <div class="flex-container">
-    <div class="flex-item scrollable">
-      <div class="container">
-        <!-- Content for the first container -->
-        <h2 style="margin-left: 50px;margin-top: 10px;">Commentaires</h2>
-        <div style="align-items: center; padding: 20px;">
-          <textarea placeholder="Rediger vos commentaires..."></textarea>
-        </div>
+  <div class="flex-item scrollable">
+    <div class="container">
+      <!-- Content for the first container -->
+      <h2 style="margin-left: 50px;margin-top: 10px;">Commentaires</h2>
+      <div style="align-items: center; padding-top: 20px;padding-left: 20px;padding-right: 20px;">
+        <textarea [(ngModel)]="userText" placeholder="Rédiger vos commentaires..."></textarea>
+        <button (click)="saveComment()">Save</button>
+
       </div>
+      <app-listcomment></app-listcomment>
+      
+
     </div>
+  </div>
+  
   
     <div class="flex-item scrollable">
       <div class="container" >
@@ -112,30 +84,31 @@
 
 <br>
 
-
+  
 <div class="container" style="max-width: 100%;">
-  <!-- Content for the first container -->
-  <h2 style="margin-left: 50px;margin-top: 10px;">Validations</h2>
+
+  <h2 style="margin-left: 50px;margin-top: 10px;">Factures</h2>
   <div class="container-list">
     <div *ngFor="let container of containers" class="item-container">
       <div class="container-header">
-        <h3 class="container-title">{{ container.title }}</h3>
+        <h3 class="container-title">Facture</h3>
       
         <img src="./assets/images/facture/trash.png" alt="Delete" width="25px" height="25px" (click)="deleteContainer(container)">
 
       </div>
       <div class="container-content">
-        <h3 class="container-name">{{ container.name }}</h3>
+        <h3 class="container-name">{{ container.frais.sum }} $</h3>
        <br>
         <div class="container-footer">
-          <p class="container-date">Date: {{ currentDate }}</p>
-          <p class="container-signature">Signature: John Doe</p>
+          <p class="container-date">Date: {{ container.date }}</p>
+          <p class="container-signature">State: <span *ngIf="container.frais.etat ">approuvé</span> <span *ngIf="!container.frais.etat ">en cours</span></p>
         </div>
         
       </div>
     </div>
   </div>
 </div>
+
 
 
 
